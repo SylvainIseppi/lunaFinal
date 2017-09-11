@@ -24,11 +24,11 @@
 <body>
 	<div class="row first-row">
 		<div class="col-sm-2 menu">
-			<s:a href="accueil.jsp">accueil</s:a>
-			<s:a action="accueilCategorie">Categorie </s:a>
-			<s:a action="accueilClient">Client </s:a>
-			<s:a action="accueilArticle">Article </s:a>
-			<s:a action="accueilCommande">Commande </s:a>
+			<s:a href="accueil.jsp">Accueil</s:a>
+			<s:a action="accueilCategorie">Catégorie</s:a>
+			<s:a action="accueilClient">Client</s:a>
+			<s:a action="accueilArticle">Article</s:a>
+			<s:a action="accueilCommande">Commande</s:a>
 		</div>
 
 		<div class="col-sm-10 corp">
@@ -48,7 +48,7 @@
 								<s:textfield name="client.remarque" label="Remarques" labelposition="left" />
 								<s:radio label="Carte de fidelité" labelposition="left" name="client.carteFidelite"
 									list="#{'false':'Non','true':'Oui'}" />
-								<s:submit value="Valider"></s:submit>
+								<s:submit class="btn btn-primary" value="Valider"></s:submit>
 							</s:form>
 						</p>
 					</div>

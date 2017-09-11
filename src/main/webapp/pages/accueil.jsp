@@ -13,11 +13,14 @@
 <body>
 	<div class="row first-row">
 		<div class="col-sm-2 menu">
-			<s:a href="accueil.jsp">accueil</s:a>
-			<s:a action="accueilCategorie">Categorie </s:a>
-			<s:a action="accueilClient">Client </s:a>
-			<s:a action="accueilArticle">Article </s:a>
-			<s:a action="accueilCommande">Commande </s:a>
+			<s:a href="accueil.jsp">Accueil</s:a>
+			<s:a action="accueilCategorie">Catégorie</s:a>
+			<s:a action="accueilClient">Client</s:a>
+			<s:a action="accueilArticle">Article</s:a>
+			<s:a action="accueilCommande">Commande</s:a>
+		</div>
+		<div class="col-sm-10 corp">
+			<h3>Bienvenue sur l'application Luna, </br> parcourez le menu à gauche pour découvrir les différentes fonctionnalités de l'application.</h3>
 		</div>
 	</div>
 </body>
