@@ -7,14 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Gestion des commandes</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/styles/bootstrap.css"
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/styles/bootstrap.css"
 	media="all" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/styles/style.css"
-	media="all" />
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/styles/style.css" media="all" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/styles/font-awesome.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/styles/font-awesome.css">
 <script>
 	$(function() {
 		$("#accordion").accordion();
@@ -24,7 +27,7 @@
 <body>
 	<div class="row first-row">
 		<div class="col-sm-2 menu">
-			<s:a href="pages/accueil.jsp">accueil</s:a>
+			<s:a href="accueil.jsp">accueil</s:a>
 			<s:a action="accueilCategorie">Catégorie</s:a>
 			<s:a action="accueilClient">Client</s:a>
 			<s:a action="accueilArticle">Article</s:a>
@@ -34,23 +37,30 @@
 			<div id="accordion">
 				<h3 class="ajout">Ajouter une Commande</h3>
 				<div>
-					<div>
-						<p>
+					<div class="row">
+						<div class="col-sm-6">
 							<s:form action="/insertCommande" name="commandeForm"
 								method="post" theme="css_xhtml">
 								<s:select list="lesClients" listValue="nom" listKey="id"
 									name="id"></s:select>
-								<s:select list="lesArticles" listValue="designation"
-									listKey="id" name="id"></s:select>
 								<select name="modepaiement">
 									<option value="carte">Carte Bleue</option>
 									<option value="cheque">Chèque</option>
 									<option value="paypal">PayPal</option>
 								</select>
-								<s:textfield name="commande.quantite" placeholder="Quantité" />
 								<s:submit value="Ajouter" />
 							</s:form>
-						</p>
+						</div>
+						<div class="col-sm-6">
+							test
+							<form action="ajoutArticleCommande">
+								<s:select list="lesArticles" listValue="designation"
+									listKey="id" name="id"/><br />
+								<s:textfield name="commande.quantite" placeholder="Quantité" />
+								<s:submit value="Ajouter" />
+							</form>
+						</div>
+
 					</div>
 				</div>
 				<h3 class="ajout">Liste des Commandes</h3>

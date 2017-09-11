@@ -28,7 +28,7 @@
 <body>
 	<div class="row first-row">
 		<div class="col-sm-2 menu">
-			<s:a href="pages/accueil.jsp">accueil</s:a>
+			<s:a href="accueil.jsp">accueil</s:a>
 			<s:a action="accueilCategorie">Catégorie</s:a>
 			<s:a action="accueilClient">Client</s:a>
 			<s:a action="accueilArticle">Article</s:a>
