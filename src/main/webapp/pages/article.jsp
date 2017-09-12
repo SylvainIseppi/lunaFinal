@@ -24,11 +24,15 @@
 <body>
 	<div class="row first-row">
 		<div class="col-sm-2 menu">
-			<s:a href="accueil.jsp">Accueil</s:a>
-			<s:a action="accueilCategorie">Catégorie</s:a>
-			<s:a action="accueilClient">Client</s:a>
-			<s:a action="accueilArticle">Article</s:a>
-			<s:a action="accueilCommande">Commande</s:a>
+			<s:a href="accueil.jsp"><h2 style="color: white">Accueil</h2></s:a>
+			</br>
+			<s:a action="accueilCategorie"><h2 style="color: white">Catégorie</h2></s:a>
+			</br>
+			<s:a action="accueilClient"><h2 style="color: white">Client</h2></s:a>
+			</br>
+			<s:a action="accueilArticle"><h2 style="color: white">Article</h2></s:a>
+			</br>
+			<s:a action="accueilCommande"><h2 style="color: white">Commande</h2></s:a>
 		</div>
 		<div class="col-sm-10 corp">
 			<div id="accordion">
