@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,7 +43,8 @@
 							<s:form action="/insertCommande" name="commandeForm"
 								method="post" theme="css_xhtml">
 								<s:select list="lesClients" listValue="nom" listKey="id"
-									name="id"></s:select>
+									name="idClient"></s:select>
+								<s:textfield type="hidden" value="listeCommande" />
 								<select name="modepaiement">
 									<option value="carte">Carte Bleue</option>
 									<option value="cheque">Chèque</option>
@@ -50,13 +52,32 @@
 								</select>
 								<s:submit value="Ajouter" />
 							</s:form>
+
+							<table>
+								<thead>
+									<tr>
+										<th>article</th>
+										<th>quantite</th>
+									</tr>
+								</thead>
+								<tbody>
+								
+									<c:forEach items="${detailCommandecopie}" var="unArt">
+										<tr>
+											<td>${unArt.key.designation}</td>
+											<td> ${unArt.value}</td>
+											
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 						<div class="col-sm-6">
-							test
 							<form action="ajoutArticleCommande">
 								<s:select list="lesArticles" listValue="designation"
-									listKey="id" name="id"/><br />
-								<s:textfield name="commande.quantite" placeholder="Quantité" />
+									listKey="id" name="idArticle" />
+								<br />
+								<s:textfield name="quantiteArt" placeholder="Quantité" />
 								<s:submit value="Ajouter" />
 							</form>
 						</div>
@@ -68,17 +89,17 @@
 					<table class="table-center">
 						<thead>
 							<tr>
-								<th>Désignation Article</th>
-								<th>Quantité</th>
+								<th>Client</th>
+								<th>adresse</th>
 								<th>Prix</th>
 								<th>Supprimer</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${lesCommandes}" var="uneCommande">
-								<td>${uneCommande.libelle }</td>
-								<td>${uneCommande.quantite }</td>
-								<td>${uneCommande.prixUnitaire }</td>
+								<td>${uneCommande.client.nom } ${uneCommande.client.prenom }</td>
+								<td>${uneCommande.client.adresse }</td>
+								
 							</c:forEach>
 						</tbody>
 					</table>
