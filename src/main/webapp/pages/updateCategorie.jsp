@@ -25,7 +25,7 @@
 			<h3>Modification Catégorie ${categorie2.libelle }</h3>
 			<s:form action="/valideUpdateCategorie" theme="css_xhtml">
 				<s:textfield type="hidden" name="categorie2.id"><s:param>${categorie2.id }</s:param> </s:textfield>
-				<s:textfield name="categorie2.libelle" label="Désignation" labelposition="left"><s:param>${article2.libelle } </s:param> </s:textfield>
+				<s:textfield name="categorie2.libelle" label="Désignation" labelposition="left"><s:param>${categorie2.libelle } </s:param> </s:textfield>
 				<s:submit class="btn btn-primary" value="Valider"></s:submit>
 			</s:form>
 		</div>
