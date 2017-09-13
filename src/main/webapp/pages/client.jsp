@@ -15,7 +15,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }js/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }styles/font-awesome.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/styles/font-awesome.css">
 <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script>
 	$(function() {
