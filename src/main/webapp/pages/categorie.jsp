@@ -58,6 +58,7 @@
 				</div>
 				<h3 class="ajout">Liste des Catégories</h3>
 				<div>
+					<c:if test="${!empty lesCategories }">
 					<table class="table-center" id="myTable">
 						<thead>
 							<tr>
@@ -84,8 +85,8 @@
 
 							</c:forEach>
 						</tbody>
-
 					</table>
+					</c:if>
 				</div>
 			</div>
 		</div>

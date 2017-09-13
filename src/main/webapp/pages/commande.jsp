@@ -13,15 +13,20 @@
 	media="all" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/styles/style.css" media="all" />
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/styles/font-awesome.css">
+<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script>
 	$(function() {
 		$("#accordion").accordion();
+	});
+	$(document).ready(function(){
+	    $('#myTable').DataTable();
 	});
 </script>
 </head>
@@ -70,10 +75,10 @@
 							<table class="table-center">
 								<thead>
 									<tr>
-										<th>article</th>
-										<th>quantite</th>
-										<th>prix unitaire</th>
-										<th>prix </th>
+										<th>Article</th>
+										<th>Quantité</th>
+										<th>Prix Unitaire</th>
+										<th>Prix Total</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -107,13 +112,14 @@
 				</div>
 				<h3 class="ajout">Liste des Commandes</h3>
 				<div>
-					<table class="table-center">
+					<c:if test="${!empty lesCommandes }">
+					<table class="table-center" id="myTable">
 						<thead>
 							<tr>
 								<th>Client</th>
-								<th>adresse</th>
+								<th>Adresse</th>
 								<th>Prix</th>
-								<th>mode de payement</th>
+								<th>Mode de Paiement</th>
 								<th>Supprimer</th>
 							</tr>
 						</thead>
@@ -138,6 +144,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					</c:if>
 				</div>
 			</div>
 		</div>

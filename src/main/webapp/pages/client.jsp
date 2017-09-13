@@ -11,14 +11,19 @@
 	media="all" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/styles/style.css"
 	media="all" />
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }js/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }styles/font-awesome.css">
+<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script>
 	$(function() {
 		$("#accordion").accordion();
-	})
+	});
+	$(document).ready(function(){
+	    $('#myTable').DataTable();
+	});
 </script>
 </head>
 <body>
@@ -59,7 +64,8 @@
 				</div>
 				<h3 class="ajout">Liste des Clients</h3>
 				<div>
-					<table class="table-center">
+					<c:if test="${!empty lesClients }">
+					<table class="table-center"  id="myTable">
 						<thead>
 							<tr>
 								<th>Nom</th>
@@ -97,6 +103,7 @@
 						</tbody>
 
 					</table>
+					</c:if>
 				</div>
 			</div>
 		</div>
