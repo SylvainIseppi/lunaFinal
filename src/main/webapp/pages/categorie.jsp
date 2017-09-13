@@ -17,11 +17,17 @@
 	src="${pageContext.request.contextPath }/js/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/styles/font-awesome.css">
+	<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script>
 	$(function() {
 		$("#accordion").accordion();
+	
+	});
+	$(document).ready(function(){
+	    $('#myTable').DataTable();
 	});
 </script>
 </head>
@@ -51,7 +57,7 @@
 				</div>
 				<h3 class="ajout">Liste des Catégories</h3>
 				<div>
-					<table class="table-center">
+					<table class="table-center" id="myTable">
 						<thead>
 							<tr>
 								<th>Id</th>
