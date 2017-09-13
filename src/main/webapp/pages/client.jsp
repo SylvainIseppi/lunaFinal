@@ -23,7 +23,16 @@
 		$("#accordion").accordion();
 	});
 	$(document).ready(function(){
-	    $('#myTable').DataTable();
+	    $('#myTable').DataTable({
+	        "language": {
+	            "lengthMenu": "afficher _MENU_ item par page",
+	            "zeroRecords": "pas d'enregistrement trouvé",
+	            "info": "afficher page _PAGE_ sur _PAGES_",
+	            "infoEmpty": "No records available",
+	            "infoFiltered": "(filtered from _MAX_ total records)",
+		        "search": "rechercher"
+	        }
+	    });
 	});
 </script>
 </head>
@@ -76,7 +85,6 @@
 								<th>Mobile</th>
 								<th>Email</th>
 								<th>Remarques</th>
-								<th>Carte de fidélité</th>
 								<th>Date d'inscription</th>
 								<th>Modifier</th>
 								<th>Supprimer</th>
@@ -92,7 +100,6 @@
 									<td>${unClient.mobile}</td>
 									<td>${unClient.email}</td>
 									<td>${unClient.remarque}</td>
-									<td>${unClient.carteFidelite}</td>
 									<td>${unClient.dateCreation}</td>
 									<td><s:a action="/updateClient">
 											<s:param name="idClient">${unClient.id}</s:param><span

@@ -26,7 +26,17 @@
 		$("#accordion").accordion();
 	});
 	$(document).ready(function(){
-	    $('#myTable').DataTable();
+	    $('#myTable').DataTable({
+	        "language": {
+	            "lengthMenu": "afficher _MENU_ item par page",
+	            "zeroRecords": "pas d'enregistrement trouvé",
+	            "info": "afficher page _PAGE_ sur _PAGES_",
+	            "infoEmpty": "No records available",
+	            "infoFiltered": "(filtered from _MAX_ total records)",
+		        "search": "rechercher"
+	        }
+	    });
+	});
 	});
 </script>
 </head>
