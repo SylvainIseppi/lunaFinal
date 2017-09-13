@@ -66,7 +66,7 @@
 								</select>
 								<s:submit value="Ajouter" />
 							</s:form>
-							<c:if test="${detailCommandecopie} !=null"></c:if>
+							<c:if test="${!empty detailCommandecopie }">
 							<table class="table-center">
 								<thead>
 									<tr>
@@ -91,6 +91,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							</c:if>
 						</div>
 						<div class="col-sm-6">
 							<form action="ajoutArticleCommande">

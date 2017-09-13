@@ -11,14 +11,15 @@
 	href="${pageContext.request.contextPath }/styles/bootstrap.css"
 	
 	media="all" />
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/styles/style.css" media="all" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-<link rel="stylesheet"
+
+<link  rel="stylesheet"
 	href="${pageContext.request.contextPath }/styles/font-awesome.css">
 	<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script>

@@ -88,7 +88,16 @@ public class CommandeAction extends ActionSupport implements ModelDriven<Command
 
 	@Action("/ajoutArticleCommande")
 	public String ajoutArticleCommande() {
-		article = articleServ.getUnArticle(idArticle);		
+		article = articleServ.getUnArticle(idArticle);
+		for (Entry<Article, Integer> e : detailCommande.entrySet()) {
+			System.out.println(e.getKey().getDesignation()+" comparé a "+article.getDesignation());
+			if(e.getKey().getDesignation().toString()==article.getDesignation().toString()){
+				System.out.println("ok");
+				e.setValue(e.getValue()+quantiteArt); 
+				detailCommandecopie=detailCommande;
+				return "ajoutArticleOK";
+			}
+		}
 		detailCommande.put(article, quantiteArt);
 		detailCommandecopie=detailCommande;
 		lesClients = servClient.getAllClient();
