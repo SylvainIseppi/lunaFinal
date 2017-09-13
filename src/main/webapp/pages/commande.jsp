@@ -28,15 +28,25 @@
 <body>
 	<div class="row first-row">
 		<div class="col-sm-2 menu">
-			<s:a href="accueil.jsp"><h2 style="color: white">Accueil</h2></s:a>
+			<s:a href="accueil.jsp">
+				<h2 style="color: white">Accueil</h2>
+			</s:a>
 			</br>
-			<s:a action="accueilCategorie"><h2 style="color: white">Catégorie</h2></s:a>
+			<s:a action="accueilCategorie">
+				<h2 style="color: white">Catégorie</h2>
+			</s:a>
 			</br>
-			<s:a action="accueilClient"><h2 style="color: white">Client</h2></s:a>
+			<s:a action="accueilClient">
+				<h2 style="color: white">Client</h2>
+			</s:a>
 			</br>
-			<s:a action="accueilArticle"><h2 style="color: white">Article</h2></s:a>
+			<s:a action="accueilArticle">
+				<h2 style="color: white">Article</h2>
+			</s:a>
 			</br>
-			<s:a action="accueilCommande"><h2 style="color: white">Commande</h2></s:a>
+			<s:a action="accueilCommande">
+				<h2 style="color: white">Commande</h2>
+			</s:a>
 		</div>
 		<div class="col-sm-10 corp">
 			<div id="accordion">
@@ -56,21 +66,27 @@
 								</select>
 								<s:submit value="Ajouter" />
 							</s:form>
-
-							<table>
+							<c:if test="${detailCommandecopie} !=null"></c:if>
+							<table class="table-center">
 								<thead>
 									<tr>
 										<th>article</th>
 										<th>quantite</th>
+										<th>prix unitaire</th>
+										<th>prix </th>
 									</tr>
 								</thead>
 								<tbody>
-								
+
 									<c:forEach items="${detailCommandecopie}" var="unArt">
 										<tr>
 											<td>${unArt.key.designation}</td>
-											<td> ${unArt.value}</td>
-											
+											<td>${unArt.value}</td>
+											<td>${unArt.key.prixUnitaire}</td>
+											<c:set var="totalLigne"
+												value="${unArt.key.prixUnitaire * unArt.value}"></c:set>
+											<td>${totalLigne }</td>
+
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -96,14 +112,28 @@
 								<th>Client</th>
 								<th>adresse</th>
 								<th>Prix</th>
+								<th>mode de payement</th>
 								<th>Supprimer</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${lesCommandes}" var="uneCommande">
-								<td>${uneCommande.client.nom } ${uneCommande.client.prenom }</td>
-								<td>${uneCommande.client.adresse }</td>
-								
+								<tr>
+									<td>${uneCommande.client.nom }  ${uneCommande.client.prenom }</td>
+									<td>${uneCommande.client.adresse }</td>
+
+									<c:set var="total" value="${0 }"></c:set>
+									<c:forEach items="${uneCommande.articles }" var="unArticleCommande">
+
+										<c:set var="total"
+											value="${total + unArticleCommande.prixUnitaire }" />
+									</c:forEach>
+									<td>${total }</td>
+									<td>${uneCommande.modePayement }
+									<td> <s:a action="/deleteCommande">
+											<s:param name="idCommande">${uneCommande.id}</s:param><span
+												class="fa fa-trash"></span></s:a></td>
+								</tr>
 							</c:forEach>
 						</tbody>
 					</table>

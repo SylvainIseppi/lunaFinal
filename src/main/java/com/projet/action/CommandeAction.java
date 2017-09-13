@@ -27,8 +27,8 @@ import com.projet.services.CommandeService;
 @Action("/accueilCommande")
 @ResultPath("/pages")
 @Results({ @Result(name = "SUCCES", location = "commande.jsp"),
-		@Result(name = "Suppression OK", type = "redirectAction", params = { "namespace", "/", "actionName",
-				"/accueilCommande" }),
+		@Result(name = "deleteCommandeOk", type = "redirectAction", params = { "namespace", "/", "actionName",
+		"/accueilCommande" }),
 		@Result(name = "insertOk", type = "redirectAction", params = { "namespace", "/", "actionName",
 				"/accueilCommande" }),
 		@Result(name = "ajoutArticleOK", location = "commande.jsp"), })
@@ -61,14 +61,13 @@ public class CommandeAction extends ActionSupport implements ModelDriven<Command
 		lesCommandes = servCommande.getAllCommande();
 		lesClients = servClient.getAllClient();
 		lesArticles = articleServ.getAllArticle();
-
 		return "SUCCES";
 	}
 
 	@Action("/insertCommande")
 	public String insertCommande() {
 		commande.setClient(servClient.getUnClient(idClient));
-			List<Article> articlesCommande =new ArrayList<>();
+		List<Article> articlesCommande =new ArrayList<>();
 		for (Entry<Article, Integer> e : detailCommande.entrySet()) {
 			for(int i=0;i<e.getValue();i++){
 				articlesCommande.add(e.getKey());
@@ -89,17 +88,18 @@ public class CommandeAction extends ActionSupport implements ModelDriven<Command
 
 	@Action("/ajoutArticleCommande")
 	public String ajoutArticleCommande() {
-		article = articleServ.getUnArticle(idArticle);
-		System.out.println("quantite" +quantiteArt);
+		article = articleServ.getUnArticle(idArticle);		
 		detailCommande.put(article, quantiteArt);
 		detailCommandecopie=detailCommande;
 		lesClients = servClient.getAllClient();
 		lesArticles = articleServ.getAllArticle();
-		for (Entry<Article, Integer> e : detailCommande.entrySet()) {
-			System.out.println("key :"+e.getKey());
-			System.out.println("value :"+e.getValue());
-		}
 		return "ajoutArticleOK";
+	}
+	@Action("/deleteCommande")
+	public String deleteCommande(){
+		commande=servCommande.getUneCommande(idCommande);
+		servCommande.deleteCommande(commande);
+		return "deleteCommandeOk";
 	}
 
 	@Override
