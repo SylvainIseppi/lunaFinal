@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -12,15 +13,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.projet.dao.DaoCategorie;
 import com.projet.model.Categorie;
-import com.projet.util.Context;
+
 
 public class TestCategorieDao {
 
 	private static DaoCategorie dao;
 
-	@BeforeClass
-	public static void initialisation() {
-		ClassPathXmlApplicationContext context = Context.getInstance();
+	@Before
+	public  void initialisation() {
+		ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("application-Context.xml");
 		dao = (DaoCategorie) context.getBean("DaoCategorie");
 	}
 
@@ -41,7 +42,7 @@ public class TestCategorieDao {
 		Categorie cat = new Categorie();
 		dao.insertCategorie(cat);
 		List<Categorie> listcat = dao.getAllCategorie();
-		assertEquals(listcat.size(), 4);
+		assertEquals(listcat.size(), 1);
 	}
 
 	@Test
@@ -51,7 +52,7 @@ public class TestCategorieDao {
 		Categorie cat = new Categorie();
 		dao.insertCategorie(cat);
 		dao.getUneCategorie(1L);
-		assertEquals((long) cat.getId(), 2);
+		assertEquals((long) cat.getId(), 1);
 	}
 
 	@Test
@@ -62,8 +63,8 @@ public class TestCategorieDao {
 		dao.insertCategorie(cat);
 		cat.setLibelle("electromenager");
 		dao.updateCategorie(cat);
-		cat = dao.getUneCategorie(3L);
-		assertEquals(cat.getLibelle(), null);
+		cat = dao.getUneCategorie(1L);
+		assertEquals(cat.getLibelle(), "electromenager");
 	}
 
 	@Test

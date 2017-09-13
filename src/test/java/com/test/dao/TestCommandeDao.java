@@ -5,18 +5,22 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.projet.dao.DaoArticle;
 import com.projet.dao.DaoCommande;
+import com.projet.dao.DaoCommande;
 import com.projet.model.Article;
 import com.projet.model.Commande;
-import com.projet.util.Context;
+import com.projet.model.Commande;
 
 @FixMethodOrder(MethodSorters.JVM)
 public class TestCommandeDao {
@@ -24,57 +28,62 @@ public class TestCommandeDao {
 	private static DaoCommande dao;
 	private static DaoArticle daoArt;
 
-	@BeforeClass
-	public static void initialisation() {
-		ClassPathXmlApplicationContext context = Context.getInstance();
+	@Before
+	public  void initialisation() {
+		ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("application-Context.xml");
 		dao = (DaoCommande) context.getBean("DaoCommande");
-		daoArt= (DaoArticle) context.getBean("DaoArticle");
-	}
-
-	@Test
-	public void insertCommande() {
-		Commande commande = new Commande();
-		commande.setLibelle("c56c23");
-		List<Article> listArt= new ArrayList<>();
-		listArt.add(daoArt.getUnArticle(4L));
-		listArt.add(daoArt.getUnArticle(4L));
-		listArt.add(daoArt.getUnArticle(4L));
-		listArt.add(daoArt.getUnArticle(4L));
-		listArt.add(daoArt.getUnArticle(4L));
-		commande.setArticles(listArt);
-		dao.insertCommande(commande);
 		
-
+	}
+	
+	@Test
+	@Transactional
+	@Rollback
+	public void insertCommandeTest(){
+		Commande Commande =new Commande();
+		dao.insertCommande(Commande);
+		assertEquals((long)Commande.getId(), 1);
+	}
+	
+	@Test
+	@Transactional
+	@Rollback
+	public void getAllCommandeTest(){
+		Commande Commande = new Commande();
+		dao.insertCommande(Commande);
+		List<Commande> listCommande = dao.getAllCommande();
+		assertEquals(listCommande.size(), 1);
 		
-		assertEquals((long) commande.getId(), 3);
 	}
-
+	
 	@Test
-	public void getAllCommande() {
-		assertEquals(dao.getAllCommande().size(), 1);
+	@Transactional
+	@Rollback
+	public void getUnCommandeTest(){
+		Commande Commande = new Commande();
+		dao.insertCommande(Commande);
+		dao.getUneCommande(1L);
+		assertEquals((long) Commande.getId(), 1);
 	}
-
+	
 	@Test
-	public void getOneCommande() {
-		assertEquals((long) dao.getUneCommande(3L).getId(), 3L);
+	@Transactional
+	@Rollback
+	public void updateCommandeTest(){
+			Commande Commande = new Commande();
+			dao.insertCommande(Commande);
+			Commande.setLibelle("ax");;
+			dao.updateCommande(Commande);
+			Commande = dao.getUneCommande(1L);
+			assertEquals(Commande.getLibelle(), "ax");
 	}
-
+	
 	@Test
-	public void updateCommande() {
-		Commande Commande = dao.getUneCommande(3L);
-		Commande.setLibelle("x23c5");
-		
-		dao.updateCommande(Commande);
-		Commande = dao.getUneCommande(3L);
-		assertEquals(Commande.getLibelle(), "x23c5");
-
+	@Transactional
+	@Rollback
+	public void deleteCommandeTest(){
+		Commande Commande = new Commande();
+		dao.insertCommande(Commande);
+		dao.deleteCommande(dao.getUneCommande(1L));
+		assertEquals(dao.getUneCommande(1l),null);
 	}
-
-	@Test
-	@Ignore
-	public void deleteCommande() {
-		dao.deleteCommande(dao.getUneCommande(3L));
-		assertEquals(dao.getUneCommande(3L), null);
-	}
-
 }
