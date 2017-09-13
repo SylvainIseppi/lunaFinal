@@ -65,7 +65,7 @@ public class ClientAction extends ActionSupport implements ModelDriven<Client> {
 	@Action("/valideUpdateClient")
 	public String valideUpdate() {
 		servClient.updateClient(client);
-		return "updateClient";
+		return "updateConfirm";
 	}
 
 	public List<Client> getLesClients() {
