@@ -24,7 +24,7 @@ table{
 	color:#0A85F0; 
 }
 
-table tr:NTH-CHILD(even){
+#myTable tr:NTH-CHILD(even){
   background-color:#0A85F0;
   color: black;
 }
