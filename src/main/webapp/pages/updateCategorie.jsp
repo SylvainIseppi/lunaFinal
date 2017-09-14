@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="col-sm-10 corp">
-			<h3>Modification Catégorie ${categorie2.libelle }</h3>
+			<h2>Modification Catégorie ${categorie2.libelle }</h2>
 			<s:form action="/valideUpdateCategorie" theme="css_xhtml">
 				<s:textfield type="hidden" name="categorie2.id"><s:param>${categorie2.id }</s:param> </s:textfield>
 				<s:textfield name="categorie2.libelle" label="Désignation" labelposition="left"><s:param>${categorie2.libelle } </s:param> </s:textfield>

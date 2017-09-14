@@ -24,7 +24,7 @@
 			<s:a action="accueilCommande"><h2 style="color: white">Commande</h2></s:a>
 		</div>
 		<div class="col-sm-10 corp">
-			<h3>Bienvenue sur l'application Luna, </br> parcourez le menu à gauche pour découvrir les différentes fonctionnalités de l'application.</h3>
+			<h2>Bienvenue sur l'application Luna, </br> parcourez le menu à gauche pour découvrir les différentes fonctionnalités de l'application.</h2>
 		</div>
 	</div>
 </body>

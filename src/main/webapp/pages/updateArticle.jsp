@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="col-sm-10 corp">
-			<h3>Modification Article ${article2.designation }</h3>
+			<h2>Modification Article ${article2.designation }</h2>
 			<s:form action="/valideUpdateArticle" theme="css_xhtml">
 				<s:textfield type="hidden" name="article2.id" labelposition="left">
 					<s:param>${article2.id }</s:param>

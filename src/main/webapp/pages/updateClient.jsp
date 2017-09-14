@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="col-sm-10 corp">
-			<h3>Modification Client ${client.nom }</h3>
+			<h2>Modification Client ${client.nom }</h2>
 			<s:form action="/valideUpdateClient" theme="css_xhtml">
 				<s:textfield type="hidden" name="client.id"><s:param>${client.id }</s:param></s:textfield>
 				<s:textfield name="client.nom" label="Nom" labelposition="left"><s:param>${client.nom }</s:param></s:textfield>
